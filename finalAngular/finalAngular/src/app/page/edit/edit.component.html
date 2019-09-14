@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Edit User</h2>
+            <p>Edit this user and add your changes.</p>
+            <form>
+                <label for="name">Name:
+                    <input type="text" id="name" name="name" [(ngModel)]="edituser.name" >
+                  </label>
+                  <label for="email"> Email:
+                    <input type="text" id="email" name="email" [(ngModel)]="edituser.email">
+                  </label>
+                  <label for="department">Department:
+                    <input type="text" id="department" name="department" [(ngModel)]="edituser.department">
+                  </label>
+                  <label for="password">Password:
+                    <input type="text" id="password" name="password" [(ngModel)]="edituser.password">
+                  </label>
+                  <button class="btn btn-info" (click)="onUpdate()">Send</button>
+            </form>
+        </div>
+    </div>
+</div>

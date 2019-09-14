@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>New employee:</h2>
+      <form method="POST" (submit)="onCreate($event)">
+        <label for="name">Name:
+          <input type="text" id="name" name="name" [(ngModel)]="user.name">
+        </label>
+        <label for="email"> Email:
+          <input type="text" id="email" name="email" [(ngModel)]="user.email">
+        </label>
+        <label for="department">Department:
+          <input type="text" id="department" name="department" [(ngModel)]="user.department">
+        </label>
+        <label for="password">Password:
+          <input type="text" id="password" name="password" [(ngModel)]="user.password">
+        </label>
+        <button class="btn btn-info" >Send</button>
+      </form>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  <div class="row">
+    <div class="col-12-offset-7">
+      <h2>Search:</h2>
+      <input type="text" class="form-control" [(ngModel)]="searchText">
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>name</th>
+          <th>email</th>
+          <th>department</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of list$ | async | filter : searchText | sortByName">
+          <td>{{row.id}}</td>
+          <td>{{row.name}}</td>
+          <td>{{row.email}}</td>
+          <td>{{row.department}}</td>
+          <td>
+            <div class="btn-group">
+              <a class="btn btn-info" routerLink="/show/{{row.id}}">Show</a>
+              <a class="btn btn-danger" (click)="onDelete(row.id)">Delete</a>
+              <a class="btn btn-success" routerLink="/edit/{{row.id}}">Edit</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
